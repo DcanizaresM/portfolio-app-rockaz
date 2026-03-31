@@ -1,0 +1,13 @@
+<section class="py-16 md:py-24 animate-fade-in-up">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight">Sobre mí</h1>
+    
+    @if (portfolioFacade.portfolioData(); as data) {
+      <div class="mt-12 p-8 bg-slate-900/50 backdrop-blur-sm rounded-2xl shadow-xl border border-white/5 text-left">
+        <p class="text-xl text-slate-300 font-light leading-relaxed whitespace-pre-line">
+          {{ data.about }}
+        </p>
+      </div>
+    }
+  </div>
+</section>

@@ -1,0 +1,38 @@
+<header class="bg-slate-950/80 backdrop-blur-md border-b border-white/10 sticky top-0 z-50">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl h-16 flex items-center justify-between">
+    
+    <a href="#inicio" class="flex items-center gap-2 cursor-pointer">
+      <span class="text-2xl font-black tracking-tighter text-white">
+        @if (portfolioFacade.portfolioData(); as data) {
+          {{ data.name }}<span class="text-indigo-400">.</span>dev
+        } @else {
+          Portfolio<span class="text-indigo-400">.</span>
+        }
+      </span>
+    </a>
+
+    <nav class="hidden md:flex gap-8">
+      <a href="#proyectos" class="text-sm font-semibold text-slate-300 hover:text-indigo-400 transition-colors cursor-pointer">Proyectos</a>
+      <a href="#sobre-mi" class="text-sm font-semibold text-slate-300 hover:text-indigo-400 transition-colors cursor-pointer">Sobre mí</a>
+      <a href="#contacto" class="text-sm font-semibold text-slate-300 hover:text-indigo-400 transition-colors cursor-pointer">Contacto</a>
+    </nav>
+
+    <button (click)="toggleMenu()" class="md:hidden p-2 text-slate-300 hover:text-indigo-400 focus:outline-none">
+      @if (!isMenuOpen()) {
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h18M3 6h18M3 18h18" /></svg>
+      } @else {
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+      }
+    </button>
+  </div>
+
+  @if (isMenuOpen()) {
+    <div class="md:hidden bg-slate-900 border-b border-white/10 absolute w-full shadow-2xl">
+      <nav class="flex flex-col px-4 pt-2 pb-6 space-y-3">
+        <a href="#proyectos" (click)="toggleMenu()" class="block px-3 py-2 text-base font-semibold text-slate-300 hover:text-white hover:bg-slate-800 rounded-md border border-transparent hover:border-white/5">Proyectos</a>
+        <a href="#sobre-mi" (click)="toggleMenu()" class="block px-3 py-2 text-base font-semibold text-slate-300 hover:text-white hover:bg-slate-800 rounded-md border border-transparent hover:border-white/5">Sobre mí</a>
+        <a href="#contacto" (click)="toggleMenu()" class="block px-3 py-2 text-base font-semibold text-slate-300 hover:text-white hover:bg-slate-800 rounded-md border border-transparent hover:border-white/5">Contacto</a>
+      </nav>
+    </div>
+  }
+</header>

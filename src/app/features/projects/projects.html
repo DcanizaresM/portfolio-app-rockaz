@@ -1,0 +1,15 @@
+<section class="py-16 animate-fade-in-up">
+  <div class="max-w-7xl mx-auto px-4">
+    <h1 class="text-4xl font-extrabold text-white mb-12 text-center tracking-tight">Mis Proyectos</h1>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      @for (project of portfolioFacade.projects(); track project.id) {
+        <app-project-card [project]="project"></app-project-card>
+      } @empty {
+        <div class="col-span-full text-center py-12 bg-slate-900/50 rounded-xl border border-dashed border-slate-700">
+          <p class="text-slate-400">Aún no hay proyectos publicados.</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
