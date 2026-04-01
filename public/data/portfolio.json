@@ -1,24 +1,25 @@
 {
-  "name": "David",
+  "name": "DcanizaresM",
+  "nickname": "DcanizaresM",
   "role": "Frontend Developer",
-  "about": "Desarrollador especializado en Angular, arquitecturas escalables y rendimiento web. Actualmente cursando la especialidad de Ciberseguridad de la información en IES Severo Ochoa.",
+  "about": "Ingeniero Frontend especializado en ecosistemas Angular y SAP Commerce Cloud (Spartacus). Me apasiona construir arquitecturas web escalables, priorizando siempre el máximo rendimiento y la experiencia del usuario. Actualmente curso la especialización en Ciberseguridad de la Información (IES Severo Ochoa) para blindar mis desarrollos desde el diseño.",
   "projects": [
     {
       "id": "p1",
       "title": "Portafolio Personal",
       "description": "Plataforma escalable construida con Angular y SSR.",
       "technologies": ["Angular 18", "RxJS", "Tailwind CSS"],
-      "imageUrl": "https://via.placeholder.com/400x250",
-      "githubUrl": "https://github.com/tu-usuario/repo",
+      "imageUrl": "/images/portfolio.png",
+      "githubUrl": "https://github.com/DcanizaresM/portfolio-app-rockaz.git",
       "liveUrl": "https://tu-demo.com",
       "linkedInUrl": "https://linkedin.com/in/tu-perfil"
     },
     {
       "id": "p2",
       "title": "RockyBot",
-      "description": "Bot de Discord desarrollado con Node.js y TypeScript. Proyecto final de modulo",
+      "description": "Bot Pokémon de Discord desarrollado con Node.js y TypeScript. Proyecto final de modulo",
       "technologies": ["Node.js", "TypeScript", "Discord.js"],
-      "imageUrl": "https://via.placeholder.com/400x250",
+      "imageUrl": "/images/rockybot.png",
       "githubUrl": "https://github.com/DcanizaresM/RockyBoty.git",
       "liveUrl": "https://tu-demo.com",
       "linkedInUrl": "https://linkedin.com/in/tu-perfil"
@@ -26,9 +27,9 @@
     {
       "id": "p3",
       "title": "ProBikeXtreme",
-      "description": "Proyecto de e-commerce en php. Proyecto final de asignatura",
+      "description": "Proyecto de e-commerce en PHP. Proyecto final de asignatura",
       "technologies": ["Angular 18", "RxJS", "Tailwind CSS"],
-      "imageUrl": "https://via.placeholder.com/400x250",
+      "imageUrl": "/images/ProBikeXtreme.png",
       "githubUrl": "https://github.com/DcanizaresM/ProBikeXtreme.git",
       "liveUrl": "https://tu-demo.com",
       "linkedInUrl": "https://linkedin.com/in/tu-perfil"

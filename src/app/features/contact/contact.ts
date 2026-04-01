@@ -1,35 +1,54 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http'; // Añadido para hacer peticiones de red
 
 @Component({
-selector: 'app-contact',
-standalone: true,
-// 1. Importamos el módulo de formularios reactivos
-imports: [ReactiveFormsModule],
-templateUrl: './contact.html',
-styleUrl: './contact.css'
+  selector: 'app-contact',
+  standalone: true,
+  imports: [ReactiveFormsModule],
+  templateUrl: './contact.html',
+  styleUrl: './contact.css'
 })
 export class ContactComponent {
-// 2. Inyectamos el constructor de formularios
-private fb = inject(FormBuilder);
+  private fb = inject(FormBuilder);
+  private http = inject(HttpClient); // Inyectamos el cliente HTTP
 
-// 3. Creamos la estructura y las reglas de validación
-contactForm = this.fb.group({
-name: ['', [Validators.required, Validators.minLength(3)]],
-email: ['', [Validators.required, Validators.email]],
-message: ['', [Validators.required, Validators.minLength(10)]]
-});
+  contactForm = this.fb.group({
+    name: ['', [Validators.required, Validators.minLength(3)]],
+    email: ['', [Validators.required, Validators.email]],
+    message: ['', [Validators.required, Validators.minLength(10)]]
+  });
 
-// 4. Función que se ejecuta al pulsar el botón "Enviar"
-onSubmit() {
-if (this.contactForm.valid) {
-// Si todo está bien, simulamos el envío y limpiamos el formulario
-console.log('Datos listos para enviar:', this.contactForm.value);
-alert('¡Gracias por tu mensaje! Me pondré en contacto contigo pronto.');
-this.contactForm.reset();
-} else {
-// Si hay errores, forzamos a que se muestren marcando todo como "tocado"
-this.contactForm.markAllAsTouched();
-}
-}
+  // Variables para gestionar la interfaz
+  isSubmitting = false;
+  isSuccess = false;
+
+  onSubmit() {
+    if (this.contactForm.valid) {
+      this.isSubmitting = true;
+      
+      
+      const FORMSPREE_URL = 'https://formspree.io/f/mkopzorq';
+
+      // Enviamos el valor del formulario a Formspree
+      this.http.post(FORMSPREE_URL, this.contactForm.value).subscribe({
+        next: () => {
+          this.isSuccess = true;
+          this.isSubmitting = false;
+          this.contactForm.reset(); // Limpiamos el formulario
+          
+          // Ocultamos el mensaje de éxito después de 5 segundos
+          setTimeout(() => this.isSuccess = false, 5000);
+        },
+        error: (error) => {
+          console.error('Error al enviar el mensaje', error);
+          alert('Hubo un problema al enviar el mensaje. Inténtalo más tarde.');
+          this.isSubmitting = false;
+        }
+      });
+
+    } else {
+      this.contactForm.markAllAsTouched();
+    }
+  }
 }
